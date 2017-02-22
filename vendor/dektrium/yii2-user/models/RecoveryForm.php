@@ -64,7 +64,7 @@ class RecoveryForm extends Model
     {
         return [
             'email'    => \Yii::t('user', 'Email'),
-            'password' => \Yii::t('user', 'Password'),
+            'password' => \Yii::t('user', 'Пароль'),
         ];
     }
 
@@ -125,7 +125,7 @@ class RecoveryForm extends Model
 
         \Yii::$app->session->setFlash(
             'info',
-            \Yii::t('user', 'An email has been sent with instructions for resetting your password')
+            \Yii::t('user', 'На ваш email было отправлено сообщение с инструкциями для восстановления пароля')
         );
 
         return true;
@@ -145,12 +145,12 @@ class RecoveryForm extends Model
         }
 
         if ($token->user->resetPassword($this->password)) {
-            \Yii::$app->session->setFlash('success', \Yii::t('user', 'Your password has been changed successfully.'));
+            \Yii::$app->session->setFlash('success', \Yii::t('user', 'Ваш пароль был успешно изменен.'));
             $token->delete();
         } else {
             \Yii::$app->session->setFlash(
                 'danger',
-                \Yii::t('user', 'An error occurred and your password has not been changed. Please try again later.')
+                \Yii::t('user', 'Произошла ошибка, и ваш пароль не был изменен. Пожалуйста, повторите попытку позже.')
             );
         }
 

@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
  * @var dektrium\user\models\SettingsForm $model
  */
 
-$this->title = Yii::t('user', 'Account settings');
+$this->title = Yii::t('user', 'Настройки аккаунта');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+                        <?= Html::submitButton(Yii::t('user', 'Сохранить'), ['class' => 'btn btn-block btn-success']) ?><br>
                     </div>
                 </div>
 

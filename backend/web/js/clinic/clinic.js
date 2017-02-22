@@ -67,7 +67,73 @@ function saveInfoAboutClinic(id){
       'site': site,
     },
     success: function(data){
-      console.log('Привет');
+      var html = document.getElementById('clinic_info');
+      data = JSON.parse(data);
+      var div = '<table>';
+      div += '<tr>';
+      div += '<td>';
+      div += 'Название';
+      div += '</td>';
+      div += '<td>';
+      div += data[0]['name'];
+      div += '</td>';
+      div += '</tr>';
+      div += '<tr>';
+      div += '<td>';
+      div += 'Адрес';
+      div += '</td>';
+      div += '<td>';
+      div += data[0]['adress'];
+      div += '</td>';
+      div += '</tr>';
+      div += '<tr>';
+      div += '<td>';
+      div += 'Телефон';
+      div += '</td>';
+      div += '<td>';
+      div += data[0]['phone'];
+      div += '</td>';
+      div += '</tr>';
+      div += '<tr>';
+      div += '<td>';
+      div += 'Email';
+      div += '</td>';
+      div += '<td>';
+      div += data[0]['email'];
+      div += '</td>';
+      div += '</tr>';
+      div += '<tr>';
+      div += '<td>';
+      div += 'Сайт';
+      div += '</td>';
+      div += '<td>';
+      div += data[0]['site'];
+      div += '</td>';
+      div += '</tr>';
+      div += '</table>';
+      html.innerHTML = div;
+    },
+    error: function(){
+      console.log('Внутренняя ошибка сервера');
+    }
+  });
+}
+
+function saveUser(id){
+  var email = document.getElementById('user_email').value;
+  var login = document.getElementById('user_login').value;
+  var password = document.getElementById('user_password').value;
+  $.ajax({
+    url: '/clinic/default/createuser',
+    type: 'POST',
+    data: {
+      'id': id, 
+      'email': email,
+      'login': login,
+      'password': password,
+    },
+    success: function(data){
+      console.log(data);
     },
     error: function(){
       console.log('Внутренняя ошибка сервера');

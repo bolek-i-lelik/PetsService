@@ -14,13 +14,13 @@
  * @var dektrium\user\models\Token  $token
  */
 ?>
-<?= Yii::t('user', 'Hello') ?>,
+<?= Yii::t('user', 'Здравствуйте') ?>,
 
-<?= Yii::t('user', 'Thank you for signing up on {0}', Yii::$app->name) ?>.
-<?= Yii::t('user', 'In order to complete your registration, please click the link below') ?>.
+<?= Yii::t('user', 'Благодарим Вас за регистрацию на {0}', Yii::$app->name) ?>.
+<?= Yii::t('user', 'Для завершения регистрации, пожалуйста, перейдите по ссылке ниже') ?>.
 
 <?= $token->url ?>
 
-<?= Yii::t('user', 'If you cannot click the link, please try pasting the text into your browser') ?>.
+<?= Yii::t('user', 'Если вы не можете нажать на ссылку, пожалуйста, попробуйте вставить текст в вашем браузере') ?>.
 
-<?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+<?= Yii::t('user', 'Если вы не делали этого запроса вы можете проигнорировать это сообщение') ?>.

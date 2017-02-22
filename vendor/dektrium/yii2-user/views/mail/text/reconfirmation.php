@@ -13,17 +13,17 @@
  * @var dektrium\user\models\Token $token
  */
 ?>
-<?= Yii::t('user', 'Hello') ?>,
+<?= Yii::t('user', 'Здравствуйте') ?>,
 
 <?= Yii::t(
     'user',
-    'We have received a request to change the email address for your account on {0}',
+    'Мы получили запрос на изменение адреса электронной почты для вашей учетной записи на {0}',
     Yii::$app->name
 ) ?>.
-<?= Yii::t('user', 'In order to complete your request, please click the link below') ?>.
+<?= Yii::t('user', 'Для того чтобы завершить ваш запрос, пожалуйста, перейдите по ссылке ниже') ?>.
 
 <?= $token->url ?>
 
-<?= Yii::t('user', 'If you cannot click the link, please try pasting the text into your browser') ?>.
+<?= Yii::t('user', 'Если вы не можете нажать на ссылку, пожалуйста, попробуйте вставить текст в вашем браузере') ?>.
 
-<?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+<?= Yii::t('user', 'Если вы не делали этого запроса вы можете проигнорировать это сообщение') ?>.

@@ -97,9 +97,9 @@ class SettingsForm extends Model
     {
         return [
             'email'            => Yii::t('user', 'Email'),
-            'username'         => Yii::t('user', 'Username'),
-            'new_password'     => Yii::t('user', 'New password'),
-            'current_password' => Yii::t('user', 'Current password'),
+            'username'         => Yii::t('user', 'Логин'),
+            'new_password'     => Yii::t('user', 'Новый пароль'),
+            'current_password' => Yii::t('user', 'Старый пароль'),
         ];
     }
 
@@ -150,7 +150,7 @@ class SettingsForm extends Model
     protected function insecureEmailChange()
     {
         $this->user->email = $this->email;
-        Yii::$app->session->setFlash('success', Yii::t('user', 'Your email address has been changed'));
+        Yii::$app->session->setFlash('success', Yii::t('user', 'Ваш электронный адрес был изменен'));
     }
 
     /**
@@ -169,7 +169,7 @@ class SettingsForm extends Model
         $this->mailer->sendReconfirmationMessage($this->user, $token);
         Yii::$app->session->setFlash(
             'info',
-            Yii::t('user', 'A confirmation message has been sent to your new email address')
+            Yii::t('user', 'Подтверждающее сообщение было отправлено на новый адрес электронной почты')
         );
     }
 
@@ -199,7 +199,7 @@ class SettingsForm extends Model
             'info',
             Yii::t(
                 'user',
-                'We have sent confirmation links to both old and new email addresses. You must click both links to complete your request'
+                'Мы отправили ссылки на подтверждение подписки как старых, так и новых адресов электронной почты. Вы должны нажать обе ссылки, чтобы завершить запрос'
             )
         );
     }

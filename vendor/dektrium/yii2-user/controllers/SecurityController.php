@@ -197,7 +197,7 @@ class SecurityController extends Controller
         $account = $this->finder->findAccount()->byClient($client)->one();
 
         if (!$this->module->enableRegistration && ($account === null || $account->user === null)) {
-            \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Registration on this website is disabled'));
+            \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Регистрация временно не возможна. Приносим свои извинения за временные неудобства.'));
             $this->action->successUrl = Url::to(['/user/security/login']);
             return;
         }
@@ -214,7 +214,7 @@ class SecurityController extends Controller
 
         if ($account->user instanceof User) {
             if ($account->user->isBlocked) {
-                \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Your account has been blocked.'));
+                \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Ваш аккаунт заблокирован.'));
                 $this->action->successUrl = Url::to(['/user/security/login']);
             } else {
                 \Yii::$app->user->login($account->user, $this->module->rememberFor);

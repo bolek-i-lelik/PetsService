@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  * @var dektrium\user\models\Profile $model
  */
 
-$this->title = Yii::t('user', 'Profile settings');
+$this->title = Yii::t('user', 'Настройки профиля');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -66,15 +66,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         )
                     ); ?>
 
-                <?= $form
-                    ->field($model, 'gravatar_email')
-                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+                
 
                 <?= $form->field($model, 'bio')->textarea() ?>
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+                        <?= Html::submitButton(Yii::t('user', 'Сохранить'), ['class' => 'btn btn-block btn-success']) ?>
                         <br>
                     </div>
                 </div>

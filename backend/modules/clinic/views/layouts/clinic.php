@@ -28,15 +28,14 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'название клиники',
+        'brandLabel' => 'PetsService',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $navItems=[
-        ['label' => 'Пользователи', 'url' => ['/admin/user']],
-        ['label' => 'Status', 'url' => ['/status/index']],
+        ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']]
       ];

@@ -188,7 +188,7 @@ class SettingsController extends Controller
 
         $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', \Yii::t('user', 'Your account details have been updated'));
+            \Yii::$app->session->setFlash('success', \Yii::t('user', 'Данные учетной записи были обновлены'));
             $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
             return $this->refresh();
         }
@@ -274,7 +274,7 @@ class SettingsController extends Controller
     public function actionDelete()
     {
         if (!$this->module->enableAccountDelete) {
-            throw new NotFoundHttpException(\Yii::t('user', 'Not found'));
+            throw new NotFoundHttpException(\Yii::t('user', 'Не найдено'));
         }
 
         /** @var User $user */
@@ -287,7 +287,7 @@ class SettingsController extends Controller
         $user->delete();
         $this->trigger(self::EVENT_AFTER_DELETE, $event);
 
-        \Yii::$app->session->setFlash('info', \Yii::t('user', 'Your account has been completely deleted'));
+        \Yii::$app->session->setFlash('info', \Yii::t('user', 'Ваша учетная запись была удалена полностью'));
 
         return $this->goHome();
     }

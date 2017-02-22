@@ -13,20 +13,20 @@
  * @var dektrium\user\models\User
  */
 ?>
-<?= Yii::t('user', 'Hello') ?>,
+<?= Yii::t('user', 'Здравствуйте') ?>,
 
-<?= Yii::t('user', 'Your account on {0} has been created', Yii::$app->name) ?>.
+<?= Yii::t('user', 'Ваша учётная запись на {0} была успешно создана', Yii::$app->name) ?>.
 <?php if ($module->enableGeneratingPassword): ?>
-<?= Yii::t('user', 'We have generated a password for you') ?>:
+<?= Yii::t('user', 'Мы сформировали пароль для вас') ?>:
 <?= $user->password ?>
 <?php endif ?>
 
 <?php if ($token !== null): ?>
-<?= Yii::t('user', 'In order to complete your registration, please click the link below') ?>.
+<?= Yii::t('user', 'Для завершения регистрации, пожалуйста, перейдите по ссылке ниже') ?>.
 
 <?= $token->url ?>
 
-<?= Yii::t('user', 'If you cannot click the link, please try pasting the text into your browser') ?>.
+<?= Yii::t('user', 'Если вы не можете нажать на ссылку, пожалуйста, попробуйте вставить текст в вашем браузере') ?>.
 <?php endif ?>
 
-<?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+<?= Yii::t('user', 'Если вы не делали этого запроса вы можете проигнорировать это сообщение') ?>.

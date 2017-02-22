@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
  * @var dektrium\user\Module $module
  */
 
-$this->title = Yii::t('user', 'Sign in');
+$this->title = Yii::t('user', 'Авторизация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?php if ($module->debug): ?>
                     <div class="alert alert-warning">
-                        <?= Yii::t('user', 'Password is not necessary because the module is in DEBUG mode.'); ?>
+                        <?= Yii::t('user', 'Пароль не требуется, поскольку модуль находится в режиме отладки.'); ?>
                     </div>
                 <?php else: ?>
                     <?= $form->field(
@@ -70,10 +70,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['inputOptions' => ['class' => 'form-control', 'tabindex' => '2']])
                         ->passwordInput()
                         ->label(
-                            Yii::t('user', 'Password')
+                            Yii::t('user', 'Пароль')
                             . ($module->enablePasswordRecovery ?
                                 ' (' . Html::a(
-                                    Yii::t('user', 'Forgot password?'),
+                                    Yii::t('user', 'Забыли пароль?'),
                                     ['/user/recovery/request'],
                                     ['tabindex' => '5']
                                 )
@@ -84,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'rememberMe')->checkbox(['tabindex' => '3']) ?>
 
                 <?= Html::submitButton(
-                    Yii::t('user', 'Sign in'),
+                    Yii::t('user', 'Войти'),
                     ['class' => 'btn btn-primary btn-block', 'tabindex' => '4']
                 ) ?>
 
@@ -93,12 +93,12 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <?php if ($module->enableConfirmation): ?>
             <p class="text-center">
-                <?= Html::a(Yii::t('user', 'Didn\'t receive confirmation message?'), ['/user/registration/resend']) ?>
+                <?= Html::a(Yii::t('user', 'Не получили подтверждающее сообщение?'), ['/user/registration/resend']) ?>
             </p>
         <?php endif ?>
         <?php if ($module->enableRegistration): ?>
             <p class="text-center">
-                <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+                <?= Html::a(Yii::t('user', 'Не зарегистрированы? Зарегистрироваться!'), ['/user/registration/register']) ?>
             </p>
         <?php endif ?>
         <?= Connect::widget([

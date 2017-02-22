@@ -80,8 +80,8 @@ class RegistrationForm extends Model
     {
         return [
             'email'    => Yii::t('user', 'Email'),
-            'username' => Yii::t('user', 'Username'),
-            'password' => Yii::t('user', 'Password'),
+            'username' => Yii::t('user', 'Логин'),
+            'password' => Yii::t('user', 'Пароль'),
         ];
     }
 
@@ -117,7 +117,7 @@ class RegistrationForm extends Model
             'info',
             Yii::t(
                 'user',
-                'Your account has been created and a message with further instructions has been sent to your email'
+                'Ваша учетная запись была создана и сообщение с дальнейшими инструкциями отправлено на вашу электронную почту.'
             )
         );
 

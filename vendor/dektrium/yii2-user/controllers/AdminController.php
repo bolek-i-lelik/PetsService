@@ -398,7 +398,7 @@ class AdminController extends Controller
         $model->confirm();
         $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
 
-        \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been confirmed'));
+        \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'email подтверждён'));
 
         return $this->redirect(Url::previous('actions-redirect'));
     }
@@ -414,14 +414,14 @@ class AdminController extends Controller
     public function actionDelete($id)
     {
         if ($id == \Yii::$app->user->getId()) {
-            \Yii::$app->getSession()->setFlash('danger', \Yii::t('user', 'You can not remove your own account'));
+            \Yii::$app->getSession()->setFlash('danger', \Yii::t('user', 'Вы не можете удалить собственную учетную запись'));
         } else {
             $model = $this->findModel($id);
             $event = $this->getUserEvent($model);
             $this->trigger(self::EVENT_BEFORE_DELETE, $event);
             $model->delete();
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
-            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been deleted'));
+            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Пользователь был удалён'));
         }
 
         return $this->redirect(['index']);
@@ -437,7 +437,7 @@ class AdminController extends Controller
     public function actionBlock($id)
     {
         if ($id == \Yii::$app->user->getId()) {
-            \Yii::$app->getSession()->setFlash('danger', \Yii::t('user', 'You can not block your own account'));
+            \Yii::$app->getSession()->setFlash('danger', \Yii::t('user', 'Вы не можете заблокировать свой собственный аккаунт'));
         } else {
             $user  = $this->findModel($id);
             $event = $this->getUserEvent($user);
@@ -445,12 +445,12 @@ class AdminController extends Controller
                 $this->trigger(self::EVENT_BEFORE_UNBLOCK, $event);
                 $user->unblock();
                 $this->trigger(self::EVENT_AFTER_UNBLOCK, $event);
-                \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been unblocked'));
+                \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Аккаунт разблокирован'));
             } else {
                 $this->trigger(self::EVENT_BEFORE_BLOCK, $event);
                 $user->block();
                 $this->trigger(self::EVENT_AFTER_BLOCK, $event);
-                \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been blocked'));
+                \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Аккаунт заблокирован'));
             }
         }
 
@@ -466,13 +466,13 @@ class AdminController extends Controller
     {
         $user = $this->findModel($id);
         if ($user->isAdmin) {
-            throw new ForbiddenHttpException(Yii::t('user', 'Password generation is not possible for admin users'));
+            throw new ForbiddenHttpException(Yii::t('user', 'Генерация паролей не представляется возможной для администратора'));
         }
 
         if ($user->resendPassword()) {
-            Yii::$app->session->setFlash('success', \Yii::t('user', 'New Password has been generated and sent to user'));
+            Yii::$app->session->setFlash('success', \Yii::t('user', 'Новый пароль был создан и отправлен пользователю'));
         } else {
-            Yii::$app->session->setFlash('danger', \Yii::t('user', 'Error while trying to generate new password'));
+            Yii::$app->session->setFlash('danger', \Yii::t('user', 'Ошибка при попытке сгенерировать новый пароль'));
         }
 
         return $this->redirect(Url::previous('actions-redirect'));
@@ -491,7 +491,7 @@ class AdminController extends Controller
     {
         $user = $this->finder->findUserById($id);
         if ($user === null) {
-            throw new NotFoundHttpException('The requested page does not exist');
+            throw new NotFoundHttpException('Запрашиваемая страница не существует');
         }
 
         return $user;

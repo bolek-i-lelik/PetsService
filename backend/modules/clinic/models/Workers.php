@@ -16,6 +16,9 @@ use Yii;
  * @property integer $user_id
  * @property string $phone
  * @property string $email
+ * @property string $position
+ *
+ * @property Departments[] $departments
  */
 class Workers extends \yii\db\ActiveRecord
 {
@@ -35,7 +38,7 @@ class Workers extends \yii\db\ActiveRecord
         return [
             [['name', 'familie', 'father', 'specification', 'parent', 'user_id', 'email'], 'required'],
             [['parent', 'user_id'], 'integer'],
-            [['name', 'familie', 'father', 'specification', 'email'], 'string', 'max' => 255],
+            [['name', 'familie', 'father', 'specification', 'email', 'position'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 20],
         ];
     }
@@ -55,6 +58,15 @@ class Workers extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'phone' => 'Phone',
             'email' => 'Email',
+            'position' => 'Position',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDepartments()
+    {
+        return $this->hasMany(Departments::className(), ['manager_id' => 'id']);
     }
 }

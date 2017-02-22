@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Intelvet - административная панель',
+        'brandLabel' => 'PetsSevice - административная панель',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -35,7 +35,7 @@ AppAsset::register($this);
     ]);
     $navItems=[
         ['label' => 'Пользователи', 'url' => ['/admin/user']],
-        ['label' => 'Status', 'url' => ['/status/index']],
+        ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']]
       ];

@@ -5,9 +5,13 @@ namespace app\modules\clinic\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\modules\clinic\models\Adress;
-use app\modules\clinic\models\Workers;
-use app\modules\clinic\models\Clinic;
+use app\modules\clinic\models\{
+    Adress,
+    Workers,
+    Departments,
+    Clinic
+};
+use dektrium\user\models\User;
 
 /**
  * Default controller for the `clinic` module
@@ -51,16 +55,18 @@ class DefaultController extends Controller
         $clinic = Clinic::find()->where(['user_id' => $user_id])->one();
 
         $adresses = Adress::find()->where(['parent'=>$user_id])->all();
+
+        $managers = Workers::find()->where(['specification' => 1])->andWhere(['parent' => $user_id])->all();
         
         return $this->render('index',[
             'adresses' => $adresses,
             'clinic' => $clinic,
+            'managers' => $managers,
         ]);
     }
 
     public function actionCreateinfo()
     {
-        echo 'fgjdghjdfh';
         if(Yii::$app->request->isAJAX ){
             $query = Yii::$app->request->post();
             
@@ -80,7 +86,17 @@ class DefaultController extends Controller
                 $clinic->site = $site;
                 $clinic->user_id = $id;
                 if($clinic->save()){
-                    echo 'Информация сохранена';
+                    $answer = array([
+                        'id'=>$id,
+                        'name'=>$name,
+                        'adress'=>$adress,
+                        'phone'=>$phone,
+                        'email'=>$email,
+                        'site'=>$site
+                    ]);
+                    $answer = json_encode($answer);
+
+                    return $answer;
                 }else{
                     echo 'Информация не сохранена';
                 }    
@@ -94,12 +110,63 @@ class DefaultController extends Controller
             $clinic->site = $site;
             $clinic->user_id = $id;
             if($clinic->save()){
-                echo 'Информация сохранена';
+                $answer = array([
+                    'id'=>$id,
+                    'name'=>$name,
+                    'adress'=>$adress,
+                    'phone'=>$phone,
+                    'email'=>$email,
+                    'site'=>$site
+                ]);
+                $answer = json_encode($answer);
+
+                return $answer;
             }else{
                 echo 'Информация не сохранена';
             }
         }
 
-        return 'ОК';
+        return true;
+    }
+
+    public function actionManagers()
+    {
+        //$password = '123456';
+        //echo Yii::$app->getModule('user')->cost.'<br/>';
+        //echo Yii::$app->security->generatePasswordHash($password, Yii::$app->getModule('user')->cost);
+        //exit();
+        $users = User::find()->where(['parent_id' => Yii::$app->user->id])->all();
+
+        return $this->render('managers',[
+            'users' => $users,
+        ]);
+
+    }
+
+    public function actionCreateuser()
+    {
+
+        if(Yii::$app->request->isAJAX ){
+            $query = Yii::$app->request->post();
+
+            $parent = $query['id'];
+            $email = $query['email'];
+            $login = $query['login'];
+            $password = $query['password'];
+
+            $password = Yii::$app->security->generatePasswordHash($password, Yii::$app->getModule('user')->cost);
+
+            $user = new User();
+            $user->username = $login;
+            $user->email = $email;
+            $user->password_hash = $password;
+            $user->parent_id = $parent;
+            if($user->save()){
+                return 'OK';
+            }else{
+                return 'faile';
+            }
+        }
+
     }
 }

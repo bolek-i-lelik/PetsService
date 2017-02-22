@@ -13,10 +13,10 @@
  * @var dektrium\user\models\User
  */
 ?>
-<?= Yii::t('user', 'Hello') ?>,
+<?= Yii::t('user', 'Здравствуйте') ?>,
 
-<?= Yii::t('user', 'Your account on {0} has a new password', Yii::$app->name) ?>.
-<?= Yii::t('user', 'We have generated a password for you') ?>:
+<?= Yii::t('user', 'Ваша учетная запись на {0} имеет новый пароль', Yii::$app->name) ?>.
+<?= Yii::t('user', 'Мы сформировали пароль для вас') ?>:
 <?= $user->password ?>
 
-<?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+<?= Yii::t('user', 'Если вы не делали этого запроса вы можете проигнорировать это сообщение') ?>.

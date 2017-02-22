@@ -16,7 +16,8 @@ use Yii;
  * @property string $site
  * @property integer $user_id
  *
- * @property Users $user
+ * @property User $user
+ * @property Departments[] $departments
  */
 class Clinic extends \yii\db\ActiveRecord
 {
@@ -36,7 +37,6 @@ class Clinic extends \yii\db\ActiveRecord
         return [
             [['name', 'adress', 'phone', 'user_id'], 'required'],
             [['user_id'], 'integer'],
-            [['email'], 'email'],
             [['name', 'adress', 'phone', 'avatar', 'email', 'site'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \dektrium\user\models\User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -65,5 +65,13 @@ class Clinic extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(\dektrium\user\models\User::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDepartments()
+    {
+        return $this->hasMany(Departments::className(), ['parent_id' => 'id']);
     }
 }

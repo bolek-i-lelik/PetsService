@@ -33,17 +33,17 @@ use yii\helpers\Html;
         'validateOnChange'       => false,
     ]) ?>
 
-    <?= $form->field($model, 'login')->textInput(['placeholder' => 'Login']) ?>
+    <?= $form->field($model, 'login')->textInput(['placeholder' => 'Логин']) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Password']) ?>
+    <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Пароль']) ?>
 
     <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-    <?= Html::submitButton(Yii::t('user', 'Sign in'), ['class' => 'btn btn-primary btn-block']) ?>
+    <?= Html::submitButton(Yii::t('user', 'Войти'), ['class' => 'btn btn-primary btn-block']) ?>
 
     <?php ActiveForm::end(); ?>
 <?php else: ?>
-    <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], [
+    <?= Html::a(Yii::t('user', 'Выйти'), ['/user/security/logout'], [
         'class'       => 'btn btn-danger btn-block',
         'data-method' => 'post'
     ]) ?>

@@ -107,7 +107,7 @@ class ResendForm extends Model
             'info',
             \Yii::t(
                 'user',
-                'A message has been sent to your email address. It contains a confirmation link that you must click to complete registration.'
+                'Сообщение было отправлено на ваш электронный адрес. Оно содержит ссылку для подтверждения, вам необходимо перейти по ней, чтобы завершить регистрацию.'
             )
         );
 

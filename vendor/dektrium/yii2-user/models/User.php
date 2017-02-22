@@ -187,14 +187,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'username'          => \Yii::t('user', 'Username'),
+            'username'          => \Yii::t('user', 'Лщгин'),
             'email'             => \Yii::t('user', 'Email'),
-            'registration_ip'   => \Yii::t('user', 'Registration ip'),
-            'unconfirmed_email' => \Yii::t('user', 'New email'),
-            'password'          => \Yii::t('user', 'Password'),
-            'created_at'        => \Yii::t('user', 'Registration time'),
-            'last_login_at'     => \Yii::t('user', 'Last login'),
-            'confirmed_at'      => \Yii::t('user', 'Confirmation time'),
+            'registration_ip'   => \Yii::t('user', 'ip при регистрации'),
+            'unconfirmed_email' => \Yii::t('user', 'Новый email'),
+            'password'          => \Yii::t('user', 'Пароль'),
+            'created_at'        => \Yii::t('user', 'Время регистрации'),
+            'last_login_at'     => \Yii::t('user', 'Предыдущий login'),
+            'confirmed_at'      => \Yii::t('user', 'Время изменения'),
         ];
     }
 
@@ -354,13 +354,13 @@ class User extends ActiveRecord implements IdentityInterface
             $token->delete();
             if (($success = $this->confirm())) {
                 \Yii::$app->user->login($this, $this->module->rememberFor);
-                $message = \Yii::t('user', 'Thank you, registration is now complete.');
+                $message = \Yii::t('user', 'Спасибо, регистрация завершена.');
             } else {
-                $message = \Yii::t('user', 'Something went wrong and your account has not been confirmed.');
+                $message = \Yii::t('user', 'Что-то пошло не так, и ваша учетная запись не была подтверждена.');
             }
         } else {
             $success = false;
-            $message = \Yii::t('user', 'The confirmation link is invalid or expired. Please try requesting a new one.');
+            $message = \Yii::t('user', 'Ссылка для подтверждения является недействительной или истек срок её действия. Пожалуйста, попробуйте запросить новую.');
         }
 
         \Yii::$app->session->setFlash($success ? 'success' : 'danger', $message);
@@ -404,12 +404,12 @@ class User extends ActiveRecord implements IdentityInterface
         ])->andWhere(['in', 'type', [Token::TYPE_CONFIRM_NEW_EMAIL, Token::TYPE_CONFIRM_OLD_EMAIL]])->one();
 
         if (empty($this->unconfirmed_email) || $token === null || $token->isExpired) {
-            \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Your confirmation token is invalid or expired'));
+            \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Ваш токен подтверждения является недействительным или истек срок его действия'));
         } else {
             $token->delete();
 
             if (empty($this->unconfirmed_email)) {
-                \Yii::$app->session->setFlash('danger', \Yii::t('user', 'An error occurred processing your request'));
+                \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Произошла ошибка обработки вашего запроса'));
             } elseif ($this->finder->findUser(['email' => $this->unconfirmed_email])->exists() == false) {
                 if ($this->module->emailChangeStrategy == Module::STRATEGY_SECURE) {
                     switch ($token->type) {
@@ -439,7 +439,7 @@ class User extends ActiveRecord implements IdentityInterface
                     || ($this->flags & self::NEW_EMAIL_CONFIRMED && $this->flags & self::OLD_EMAIL_CONFIRMED)) {
                     $this->email = $this->unconfirmed_email;
                     $this->unconfirmed_email = null;
-                    \Yii::$app->session->setFlash('success', \Yii::t('user', 'Your email address has been changed'));
+                    \Yii::$app->session->setFlash('success', \Yii::t('user', 'Ваш email был изменён'));
                 }
                 $this->save(false);
             }
