@@ -56,7 +56,7 @@ class DefaultController extends Controller
 
         $adresses = Adress::find()->where(['parent'=>$user_id])->all();
 
-        $managers = Workers::find()->where(['specification' => 1])->andWhere(['parent' => $user_id])->all();
+        $managers = Workers::find()->where(['specification' => 1])->andWhere(['parent' => $clinic['id']])->all();
         
         return $this->render('index',[
             'adresses' => $adresses,
@@ -131,14 +131,14 @@ class DefaultController extends Controller
 
     public function actionManagers()
     {
-        //$password = '123456';
-        //echo Yii::$app->getModule('user')->cost.'<br/>';
-        //echo Yii::$app->security->generatePasswordHash($password, Yii::$app->getModule('user')->cost);
-        //exit();
         $users = User::find()->where(['parent_id' => Yii::$app->user->id])->all();
+
+        $clinic = Clinic::find()->where(['user_id' => Yii::$app->user->id])->one();
+        $clinic_id = $clinic['id'];
 
         return $this->render('managers',[
             'users' => $users,
+            'clinic_id' => $clinic_id,
         ]);
 
     }
@@ -166,6 +166,66 @@ class DefaultController extends Controller
             }else{
                 return 'faile';
             }
+        }
+
+    }
+
+    public function actionCreatemanager()
+    {
+
+        if(Yii::$app->request->isAJAX ){
+            $query = Yii::$app->request->post();
+
+            $user = User::find()->where(['username' => $query['username']])->one();
+            $user_id = $user['id'];
+
+            $manager = new Workers();
+            $manager->name = $query['name'];
+            $manager->familie = $query['familie'];
+            $manager->father = $query['father'];
+            $manager->position = $query['position'];
+            $manager->phone = $query['phone'];
+            $manager->email = $query['email'];
+            $manager->specification = '1';
+            $manager->user_id = $user_id;
+            $manager->parent = $query['parent'];
+            if($manager->save()){
+                return 'OK';
+            }else{
+                return 'False';
+            }
+
+        }
+
+    }
+
+    public function actionCreatedepartment()
+    {
+
+        if(Yii::$app->request->isAJAX ){
+            $query = Yii::$app->request->post();
+
+            $manager = Workers::find()->where(['id' => $query['manager']])->one();
+            $clinic = Clinic::find()->where(['id' => $query['parent']])->one();
+
+            $department = new Departments;
+            $department->name = $query['name'];
+            $department->adress = $query['adress'];
+            $department->phone = $query['phone'];
+            $department->email = $query['email'];
+            //$department->parent_id = $query['parent'];
+            //$department->manager_id = $query['manager'];
+            $department->updated_at = time();
+
+            $department->manager_id = $manager['id'];
+            $department->parent_id = $clinic['id'];
+            //$department->link('manager_id', $manager);
+            if($department->save()){
+                return 'OK';
+            }else{
+                return 'False';
+            }
+
         }
 
     }

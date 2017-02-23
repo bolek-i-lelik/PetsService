@@ -5,6 +5,7 @@
         	<div class="panel-body">
         		<div class="row">
     				<div class="col-lg-10 col-lg-offset-1">
+              <p id="user_manager">Пользователь не прикреплён</p>
       					<form class="form-horizontal" role="form">
         					<div class="form-group">
           						<label for="name" class="col-sm-3 control-label">Имя</label>
@@ -44,7 +45,7 @@
         					</div>
         					<div class="form-group">
           						<div class="col-sm-offset-2 col-sm-10">
-            						<button type="button" onclick="saveInfoAboutClinic(<?= Yii::$app->user->id ?>)" class="btn btn-default">Сохранить</button>
+            						<button type="button" onClick="saveInfoAboutManager(<?= $clinic_id ?>)" class="btn btn-default">Сохранить</button>
           						</div>
         					</div>
       					</form>
@@ -57,9 +58,9 @@
 		<div class="panel panel-info">
 	        <div class="panel-heading">Пользователи</div>
 	        <div class="panel-body">
-	        	<select class="form-control" placeholder="Пользователи">
-	        		<?php foreach ($users as $user):?>
-	        			<option><?= $user->username ?></option>
+	        	<select class="form-control" placeholder="Пользователи" onChange="changeUser()" id="changeUser">
+              <?php foreach ($users as $user):?>
+	        			<option value="<?= $user->username ?>"><?= $user->username ?></option>
 	        		<?php endforeach;?>
 	        	</select>
 	        	<br/>

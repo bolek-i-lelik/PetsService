@@ -36,13 +36,13 @@ class Departments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'name', 'adress', 'phone', 'manager_id', 'updated_at'], 'required'],
+            [['parent_id', 'name', 'adress', 'phone'], 'required'],
             [['parent_id', 'manager_id'], 'integer'],
             [['created_at'], 'safe'],
-            [['name', 'adress', 'phone', 'email', 'updated_at'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['name', 'adress', 'phone', 'email'], 'string', 'max' => 255],
+            /*[['name'], 'unique'],
             [['adress'], 'unique'],
-            [['phone'], 'unique'],
+            [['phone'], 'unique'],*/
             [['manager_id'], 'exist', 'skipOnError' => true, 'targetClass' => Workers::className(), 'targetAttribute' => ['manager_id' => 'id']],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clinic::className(), 'targetAttribute' => ['parent_id' => 'id']],
         ];

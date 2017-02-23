@@ -1,3 +1,6 @@
+var showNewDepartmensForm = false;
+
+
 //Добавление информации о клинике/сети клиник
 function addInfoAboutClinic(id){
 	var div = document.getElementById('modal-content');
@@ -131,6 +134,86 @@ function saveUser(id){
       'email': email,
       'login': login,
       'password': password,
+    },
+    success: function(data){
+      console.log(data);
+    },
+    error: function(){
+      console.log('Внутренняя ошибка сервера');
+    }
+  });
+}
+
+function changeUser(){
+  var username = document.getElementById('changeUser').value;
+  var div = document.getElementById('user_manager');
+  div.innerHTML = 'Выбран пользователь '+username;
+  alert('ОК');
+}
+
+function saveInfoAboutManager(id){
+  var name = document.getElementById('name').value;
+  alert(name);
+  var familie = document.getElementById('familie').value;
+  alert(familie);
+  var father = document.getElementById('father').value;
+  alert(father);
+  var position = document.getElementById('position').value;
+  alert(position);
+  var phone = document.getElementById('phone').value;
+  alert(phone);
+  var email = document.getElementById('email').value;
+  alert(email);
+  var username = document.getElementById('changeUser').value;
+  alert(username);
+  $.ajax({
+    url: '/clinic/default/createmanager',
+    type: 'POST',
+    data: {
+      'parent': id, 
+      'name': name,
+      'familie': familie,
+      'father': father,
+      'position': position,
+      'email': email,
+      'phone': phone,
+      'username': username,
+    },
+    success: function(data){
+      console.log(data);
+    },
+    error: function(){
+      console.log('Внутренняя ошибка сервера');
+    }
+  });
+}
+
+function showNewDepartmentsForm(){
+  if(showNewDepartmensForm == false){
+    document.getElementById('newDepartmentsForm').style.display = 'block';
+    showNewDepartmensForm = true;
+  }else{
+    document.getElementById('newDepartmentsForm').style.display = 'none';
+    showNewDepartmensForm = false;
+  }
+}
+
+function saveInfoAboutDepartment(id){
+  var name = document.getElementById('department_name').value;
+  var adress = document.getElementById('department_adress').value;
+  var phone = document.getElementById('department_phone').value;
+  var email = document.getElementById('department_email').value;
+  var manager = document.getElementById('manager').value;
+  $.ajax({
+    url: '/clinic/default/createdepartment',
+    type: 'post',
+    data: {
+      'manager': manager,
+      'parent': id, 
+      'name': name,
+      'adress': adress,
+      'email': email,
+      'phone': phone,
     },
     success: function(data){
       console.log(data);
