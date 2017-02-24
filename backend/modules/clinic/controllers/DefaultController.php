@@ -244,13 +244,48 @@ class DefaultController extends Controller
         if(Yii::$app->request->isGET ){
             $query = Yii::$app->request->get();
 
+            $department = Departments::find()->where(['id' => $query['id']])->one();
+
+            $users = User::find()->where(['parent_id' => $query['id']])->all();
+
             $workers = Workers::find()->where(['specification' => '2'])->andWhere(['parent' => $query['id']])->all();
 
             return $this->render('workers',[
                 'id' => $query['id'],
                 'workers' => $workers,
+                'users' => $users,
+                'department' => $department,
             ]);
 
         }
+    }
+
+    public function actionCreateworker()
+    {
+
+        if(Yii::$app->request->isAJAX ){
+            $query = Yii::$app->request->post();
+
+            $user = User::find()->where(['username' => $query['username']])->one();
+            $user_id = $user['id'];
+
+            $manager = new Workers();
+            $manager->name = $query['name'];
+            $manager->familie = $query['familie'];
+            $manager->father = $query['father'];
+            $manager->position = $query['position'];
+            $manager->phone = $query['phone'];
+            $manager->email = $query['email'];
+            $manager->specification = '2';
+            $manager->user_id = $user_id;
+            $manager->parent = $query['parent'];
+            if($manager->save()){
+                return 'OK';
+            }else{
+                return 'False';
+            }
+
+        }
+
     }
 }

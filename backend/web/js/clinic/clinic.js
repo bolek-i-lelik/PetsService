@@ -154,19 +154,12 @@ function changeUser(){
 
 function saveInfoAboutManager(id){
   var name = document.getElementById('name').value;
-  alert(name);
   var familie = document.getElementById('familie').value;
-  alert(familie);
   var father = document.getElementById('father').value;
-  alert(father);
   var position = document.getElementById('position').value;
-  alert(position);
   var phone = document.getElementById('phone').value;
-  alert(phone);
   var email = document.getElementById('email').value;
-  alert(email);
   var username = document.getElementById('changeUser').value;
-  alert(username);
   $.ajax({
     url: '/clinic/default/createmanager',
     type: 'POST',
@@ -233,4 +226,34 @@ function showCreateWorkers(){
     document.getElementById('createNewWorker').style.display = 'none';
     showNewWorkerPanel = false;
   }
+}
+
+function saveInfoAboutWorker(id){
+  var name = document.getElementById('name').value;
+  var familie = document.getElementById('familie').value;
+  var father = document.getElementById('father').value;
+  var position = document.getElementById('position').value;
+  var phone = document.getElementById('phone').value;
+  var email = document.getElementById('email').value;
+  var username = document.getElementById('changeUser').value;
+  $.ajax({
+    url: '/clinic/default/createworker',
+    type: 'POST',
+    data: {
+      'parent': id, 
+      'name': name,
+      'familie': familie,
+      'father': father,
+      'position': position,
+      'email': email,
+      'phone': phone,
+      'username': username,
+    },
+    success: function(data){
+      console.log(data);
+    },
+    error: function(){
+      console.log('Внутренняя ошибка сервера');
+    }
+  });
 }

@@ -25,6 +25,9 @@ return [
         'clinic' => [
             'class' => 'app\modules\clinic\Clinic',
         ],
+        'grafik' => [
+            'class' => 'app\modules\grafik\Grafik',
+        ],
     ],
     'components' => [
         'request' => [
