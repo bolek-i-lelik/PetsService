@@ -237,4 +237,20 @@ class DefaultController extends Controller
         }
 
     }
+
+    public function actionWorkers()
+    {
+
+        if(Yii::$app->request->isGET ){
+            $query = Yii::$app->request->get();
+
+            $workers = Workers::find()->where(['specification' => '2'])->andWhere(['parent' => $query['id']])->all();
+
+            return $this->render('workers',[
+                'id' => $query['id'],
+                'workers' => $workers,
+            ]);
+
+        }
+    }
 }

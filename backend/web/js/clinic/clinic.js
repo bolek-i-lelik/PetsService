@@ -1,4 +1,5 @@
 var showNewDepartmensForm = false;
+var showNewWorkerPanel = false;
 
 
 //Добавление информации о клинике/сети клиник
@@ -222,4 +223,14 @@ function saveInfoAboutDepartment(id){
       console.log('Внутренняя ошибка сервера');
     }
   });
+}
+
+function showCreateWorkers(){
+  if(showNewWorkerPanel == false){
+    document.getElementById('createNewWorker').style.display = 'block';
+    showNewWorkerPanel = true;
+  }else{
+    document.getElementById('createNewWorker').style.display = 'none';
+    showNewWorkerPanel = false;
+  }
 }

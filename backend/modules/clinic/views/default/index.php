@@ -97,6 +97,7 @@
                                 <td>Телефон</td>
                                 <td>email</td>
                                 <td>Руководитель</td>
+                                <td>Действия</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,6 +109,9 @@
                                     <td><?= $department->phone ?></td>
                                     <td><?= $department->email ?></td>
                                     <td><?= $department->manager_id ?></td>
+                                    <td>
+                                        <a href="/clinic/default/workers/<?= $department->id ?>"><i class="glyphicon glyphicon-user"></i></a>
+                                    </td>
                                 </tr>
                             <?php endforeach;?>
                         </tbody>
