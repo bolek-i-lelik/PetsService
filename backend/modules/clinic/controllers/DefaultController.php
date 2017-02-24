@@ -54,11 +54,16 @@ class DefaultController extends Controller
 
         $clinic = Clinic::find()->where(['user_id' => $user_id])->one();
 
-        $departments = Departments::find()->where(['parent_id'=>$clinic->id])->all();
+        if(isset($clinic->id)){
+            $departments = Departments::find()->where(['parent_id'=>$clinic->id])->all();
 
-        foreach ($departments as $department) {
-            $manager = Workers::find()->where(['id'=>$department->manager_id])->one();
-            $department->manager_id = $manager['familie'].' '.$manager['name'].' '.$manager['father'];
+            foreach ($departments as $department) {
+                $manager = Workers::find()->where(['id'=>$department->manager_id])->one();
+                $department->manager_id = $manager['familie'].' '.$manager['name'].' '.$manager['father'];
+            }
+        }else{
+            $departments = 0;
+            $managers = 0;
         }
 
         $managers = Workers::find()->where(['specification' => 1])->andWhere(['parent' => $clinic['id']])->all();
@@ -170,6 +175,22 @@ class DefaultController extends Controller
             $user->password_hash = $password;
             $user->parent_id = $parent;
             if($user->save()){
+
+                $user = User::find()->where(['username'=>$login])->one();
+
+                switch($query['role']){
+                    case 'manager':
+                        $auth = Yii::$app->authManager;
+                        $manager = $auth->getRole('manager'); // Получаем роль manager
+                        $auth->assign($manager, $user['id']);
+                        break;
+                    case 'worker':
+                        $auth = Yii::$app->authManager;
+                        $worker = $auth->getRole('worker'); // Получаем роль manager
+                        $auth->assign($worker, $user['id']);
+                        break;
+                }
+
                 return 'OK';
             }else{
                 return 'faile';
@@ -210,8 +231,8 @@ class DefaultController extends Controller
     public function actionCreatedepartment()
     {
 
-        if(Yii::$app->request->isAJAX ){
-            $query = Yii::$app->request->post();
+        if(Yii::$app->request->isGET ){
+            $query = Yii::$app->request->get();
 
             $manager = Workers::find()->where(['id' => $query['manager']])->one();
             $clinic = Clinic::find()->where(['id' => $query['parent']])->one();

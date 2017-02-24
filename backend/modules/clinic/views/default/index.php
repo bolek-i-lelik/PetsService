@@ -35,12 +35,13 @@
         <div class="panel-body">
             <?php if(empty($managers)):?>
                 <p>Отсутствуют руководители. Внесите информацию о руководителях клиник и филиалов</p>
-                <a href="managers" class="btn btn-primary">Создать</a>
+                <a href="/clinic/default/managers" class="btn btn-primary">Создать</a>
             <?php else:?>
 
             <?php endif;?>
             <?php if(empty($departments)):?>
                 <p>Не внесены параметры клиник и/или филиалов</p>
+            <?php else:?>
                 <button class="btn btn-primary" onclick="showNewDepartmentsForm()">Добавить</button>
                 <div id="newDepartmentsForm" class="newDepartmentsForm" style="display: none;">
                     <form class="form-horizontal" role="form">
@@ -86,7 +87,6 @@
                         </div>
                     </form>
                 </div>
-            <?php else:?>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>

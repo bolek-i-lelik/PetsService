@@ -123,7 +123,7 @@ function saveInfoAboutClinic(id){
   });
 }
 
-function saveUser(id){
+function saveUser(id, role){
   var email = document.getElementById('user_email').value;
   var login = document.getElementById('user_login').value;
   var password = document.getElementById('user_password').value;
@@ -131,6 +131,7 @@ function saveUser(id){
     url: '/clinic/default/createuser',
     type: 'POST',
     data: {
+      'role': role,
       'id': id, 
       'email': email,
       'login': login,
@@ -200,7 +201,7 @@ function saveInfoAboutDepartment(id){
   var manager = document.getElementById('manager').value;
   $.ajax({
     url: '/clinic/default/createdepartment',
-    type: 'post',
+    type: 'get',
     data: {
       'manager': manager,
       'parent': id, 

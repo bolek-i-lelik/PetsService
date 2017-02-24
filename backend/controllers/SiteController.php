@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use dektrium\user\models\User;
 
 /**
  * Site controller
@@ -60,6 +61,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+        $user = User::find()->where(['id'=>Yii::$app->user->id])->one();
+        $role = $user['role'];
+
+        $roles = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+        if(empty($roles) && $role == 'clinic'){
+            $auth = Yii::$app->authManager;
+            $clinic = $auth->getRole('clinic'); // Получаем роль editor
+            $auth->assign($clinic, Yii::$app->user->id);
+        }
+
         if(Yii::$app->user->can('admin')){
             return $this->render('admin');
         }
