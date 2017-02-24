@@ -42,7 +42,7 @@
             <?php if(empty($departments)):?>
                 <p>Не внесены параметры клиник и/или филиалов</p>
             <?php else:?>
-                <button class="btn btn-primary" onclick="showNewDepartmentsForm()">Добавить</button>
+                <button class="btn btn-primary" onclick="showNewDepartmentsForm()">Добавить</button><br/><br/>
                 <div id="newDepartmentsForm" class="newDepartmentsForm" style="display: none;">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
