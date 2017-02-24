@@ -36,8 +36,8 @@ AppAsset::register($this);
     ]);
     $navItems=[
         ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']]
+        ['label' => 'Руководители', 'url' => ['/clinic/default/managers']],
+        ['label' => 'Подразделения', 'url' => ['/clinic/default']]
       ];
       if (Yii::$app->user->isGuest) {
         array_push($navItems,['label' => 'Sign In', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);

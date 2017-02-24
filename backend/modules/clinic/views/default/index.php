@@ -14,28 +14,11 @@
                 </div>
                 <div class="col-lg-8">
                     <?php if($clinic): ?>
-                        <table>
-                            <tr>
-                                <td>Название</td>
-                                <td><?= $clinic->name ?></td>
-                            </tr>
-                            <tr>
-                                <td>Адрес</td>
-                                <td><?= $clinic->adress ?></td>
-                            </tr>
-                            <tr>
-                                <td>Телефон</td>
-                                <td><?= $clinic->phone ?></td>
-                            </tr>
-                            <tr>
-                                <td>email</td>
-                                <td><?= $clinic->email ?></td>
-                            </tr>
-                            <tr>
-                                <td>сайт</td>
-                                <td><?= $clinic->site ?></td>
-                            </tr>
-                        </table>
+                        <p><?= $clinic->name ?></p>
+                        <p><?= $clinic->adress ?></p>
+                        <p><?= $clinic->phone ?></p>
+                        <p><?= $clinic->email ?></p>
+                        <p><?= $clinic->site ?></p>
                     <?php else:?>
                         <div class="alert alert-danger">
                             Информация о вашей клинике/сети клиник отсутствует. Пожалуйста заполните!&nbsp;&nbsp;&nbsp;&nbsp;    
@@ -56,7 +39,7 @@
             <?php else:?>
 
             <?php endif;?>
-            <?php if(empty($adresses)):?>
+            <?php if(empty($departments)):?>
                 <p>Не внесены параметры клиник и/или филиалов</p>
                 <button class="btn btn-primary" onclick="showNewDepartmentsForm()">Добавить</button>
                 <div id="newDepartmentsForm" class="newDepartmentsForm" style="display: none;">
@@ -104,10 +87,30 @@
                     </form>
                 </div>
             <?php else:?>
-                <?= var_dump($adresses) ?>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
-                      
+                        <thead>
+                            <tr>
+                                <td>id</td>
+                                <td>Название</td>
+                                <td>Адрес</td>
+                                <td>Телефон</td>
+                                <td>email</td>
+                                <td>Руководитель</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($departments as $department): ?>
+                                <tr>
+                                    <td><?= $department->id ?></td>
+                                    <td><?= $department->name ?></td>
+                                    <td><?= $department->adress ?></td>
+                                    <td><?= $department->phone ?></td>
+                                    <td><?= $department->email ?></td>
+                                    <td><?= $department->manager_id ?></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
                     </table>
                 </div>
             <?php endif;?>

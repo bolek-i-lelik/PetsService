@@ -100,6 +100,30 @@
 		<div class="panel panel-info">
 	        <div class="panel-heading">Информация о руководителях</div>
 	        <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <td>id</td>
+                    <td>Фамилия Имя Отчество</td>
+                    <td>Должность</td>
+                    <td>Телефон</td>
+                    <td>email</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($managers as $manager): ?>
+                    <tr>
+                      <td><?= $manager->id ?></td>
+                      <td><?= $manager->familie.' '.$manager->name.' '.$manager->father ?></td>
+                      <td><?= $manager->position ?></td>
+                      <td><?= $manager->phone ?></td>
+                      <td><?= $manager->email ?></td>
+                    </tr>
+                  <?php endforeach;?>
+                </tbody>          
+              </table>
+            </div>
 	        </div>
 	    </div>
 	</div>

@@ -54,12 +54,17 @@ class DefaultController extends Controller
 
         $clinic = Clinic::find()->where(['user_id' => $user_id])->one();
 
-        $adresses = Adress::find()->where(['parent'=>$user_id])->all();
+        $departments = Departments::find()->where(['parent_id'=>$clinic->id])->all();
+
+        foreach ($departments as $department) {
+            $manager = Workers::find()->where(['id'=>$department->manager_id])->one();
+            $department->manager_id = $manager['familie'].' '.$manager['name'].' '.$manager['father'];
+        }
 
         $managers = Workers::find()->where(['specification' => 1])->andWhere(['parent' => $clinic['id']])->all();
         
         return $this->render('index',[
-            'adresses' => $adresses,
+            'departments' => $departments,
             'clinic' => $clinic,
             'managers' => $managers,
         ]);
@@ -136,9 +141,12 @@ class DefaultController extends Controller
         $clinic = Clinic::find()->where(['user_id' => Yii::$app->user->id])->one();
         $clinic_id = $clinic['id'];
 
+        $managers = Workers::find()->where(['parent' => $clinic_id])->andWhere(['specification'=>'1'])->all();
+
         return $this->render('managers',[
             'users' => $users,
             'clinic_id' => $clinic_id,
+            'managers' => $managers,
         ]);
 
     }
