@@ -27,31 +27,47 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => 'PetsService',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
+    if(Yii::$app->user->can('worker')){
+        NavBar::begin([
+            'brandLabel' => 'PetsService',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
+        ]);
+        $navItems=[
+            ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
+            ['label' => 'Регистратура', 'url' => ['/clients/default/new']],
+            ['label' => 'Приём', 'url' => ['/site/about']],
+            ['label' => 'Пациенты', 'url' => ['/site/contact']]
+        ];
+    }else{
+        NavBar::begin([
+            'brandLabel' => 'PetsService',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
+        ]);
+        $navItems=[
+            ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
+            ['label' => 'Status', 'url' => ['/status/index']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']]
+        ];
+    }
+    if (Yii::$app->user->isGuest) {
+        array_push($navItems,['label' => 'Войти', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
+    } else {
+        array_push($navItems,['label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
+            'linkOptions' => ['data-method' => 'post']]
+        );
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $navItems,
     ]);
-    $navItems=[
-    ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
-    ['label' => 'Status', 'url' => ['/status/index']],
-    ['label' => 'About', 'url' => ['/site/about']],
-    ['label' => 'Contact', 'url' => ['/site/contact']]
-  ];
-  if (Yii::$app->user->isGuest) {
-    array_push($navItems,['label' => 'Войти', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
-  } else {
-    array_push($navItems,['label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
-        'url' => ['/site/logout'],
-        'linkOptions' => ['data-method' => 'post']]
-    );
-  }
-echo Nav::widget([
-    'options' => ['class' => 'navbar-nav navbar-right'],
-    'items' => $navItems,
-]);
     NavBar::end();
     ?>
 

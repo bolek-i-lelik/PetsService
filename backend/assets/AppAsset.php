@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/clinic/clinic.js',
+        'js/clients/clients.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -28,6 +28,12 @@ return [
         'grafik' => [
             'class' => 'app\modules\grafik\Grafik',
         ],
+        'worker' => [
+            'class' => 'app\modules\worker\Worker',
+        ],
+        'clients' => [
+            'class' => 'app\modules\clients\Clients',
+        ],
     ],
     'components' => [
         'request' => [

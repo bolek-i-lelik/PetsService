@@ -78,6 +78,9 @@ class SiteController extends Controller
         if(Yii::$app->user->can('clinic')){
             return $this->render('clinic');
         }
+        if(Yii::$app->user->can('worker')){
+            return $this->redirect('/worker/default/index');
+        }
         
         return $this->render('index');
     }

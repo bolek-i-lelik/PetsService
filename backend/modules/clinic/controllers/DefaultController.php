@@ -166,6 +166,7 @@ class DefaultController extends Controller
             $email = $query['email'];
             $login = $query['login'];
             $password = $query['password'];
+            $role = $query['role'];
 
             $password = Yii::$app->security->generatePasswordHash($password, Yii::$app->getModule('user')->cost);
 
@@ -174,6 +175,7 @@ class DefaultController extends Controller
             $user->email = $email;
             $user->password_hash = $password;
             $user->parent_id = $parent;
+            $user->role = $role;
             if($user->save()){
 
                 $user = User::find()->where(['username'=>$login])->one();
@@ -186,7 +188,7 @@ class DefaultController extends Controller
                         break;
                     case 'worker':
                         $auth = Yii::$app->authManager;
-                        $worker = $auth->getRole('worker'); // Получаем роль manager
+                        $worker = $auth->getRole('worker'); // Получаем роль worker
                         $auth->assign($worker, $user['id']);
                         break;
                 }
