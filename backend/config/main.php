@@ -34,6 +34,9 @@ return [
         'clients' => [
             'class' => 'app\modules\clients\Clients',
         ],
+        'datecontrol' =>  [
+            'class' => '\kartik\datecontrol\Module'
+        ],
     ],
     'components' => [
         'request' => [

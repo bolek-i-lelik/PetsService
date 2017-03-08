@@ -76,4 +76,40 @@ return array (
     ),
     'bootstrap' => 'dektrium\\user\\Bootstrap',
   ),
+  'kartik-v/yii2-krajee-base' => 
+  array (
+    'name' => 'kartik-v/yii2-krajee-base',
+    'version' => '1.8.8.0',
+    'alias' => 
+    array (
+      '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
+    ),
+  ),
+  'kartik-v/yii2-date-range' => 
+  array (
+    'name' => 'kartik-v/yii2-date-range',
+    'version' => '1.6.7.0',
+    'alias' => 
+    array (
+      '@kartik/daterange' => $vendorDir . '/kartik-v/yii2-date-range',
+    ),
+  ),
+  'kartik-v/yii2-datecontrol' => 
+  array (
+    'name' => 'kartik-v/yii2-datecontrol',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/datecontrol' => $vendorDir . '/kartik-v/yii2-datecontrol',
+    ),
+  ),
+  'kartik-v/yii2-widget-timepicker' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-timepicker',
+    'version' => '1.0.3.0',
+    'alias' => 
+    array (
+      '@kartik/time' => $vendorDir . '/kartik-v/yii2-widget-timepicker',
+    ),
+  ),
 );

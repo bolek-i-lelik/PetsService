@@ -4,6 +4,76 @@
 			<div class="panel panel-info">
 	        	<div class="panel-heading">Поиск пациента</div>
 	        	<div class="panel-body">
+	        		<div class="row">
+	        		<div class="col-lg-4">
+	        		<form  class="form-horizontal" role="form">
+	        			<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="familie_search" placeholder="Фамилия">
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+          					<div class="col-sm-12">
+            					<input type="text" class="form-control" id="name_search" placeholder="Имя">
+          					</div>
+        				</div>
+				    	<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="father_search" placeholder="Отчество">
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="passport_search" placeholder="Паспорт">
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="adress_search" placeholder="Адрес">
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="phone_search" placeholder="Телефон">
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="email" class="form-control" id="email_search" placeholder="email">
+				        	</div>
+				        </div>
+				         <div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="vid_search" placeholder="Вид">
+				        	</div>
+				        </div>
+				        <div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="pets_name_search" placeholder="Кличка питомца">
+				        	</div>
+				        </div>
+				        <div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="chip_search" placeholder="Номер чипа">
+				        	</div>
+				        </div>
+				        <div class="form-group">
+				    		<div class="col-sm-12">
+				    			<input type="text" class="form-control" id="social_account_search" placeholder="Аккаунт в PetsSocial">
+				        	</div>
+				        </div>
+				        <div class="form-group">
+				        	<div class="col-sm-12">
+				        		<button type="button" onclick="searchClient(<?= $worker['parent'] ?>)" class="btn btn-default">Искать</button>
+				        	</div>
+				        </div>
+	        		</form>
+	        		</div>
+	        		<div class="col-lg-8">
+	        			<div class="search_results" id="search_results">
+	        			</div>
+	        		</div>
+	        		</div>
 	        	</div>
 	        </div>
 		</div>

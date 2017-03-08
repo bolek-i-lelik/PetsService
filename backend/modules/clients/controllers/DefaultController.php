@@ -74,4 +74,23 @@ class DefaultController extends Controller
         }
 
     }
+
+    public function actionSearchclients()
+    {
+
+        if(Yii::$app->request->isGET ){
+            $query = Yii::$app->request->get();
+
+            $passport = $query['passport'];
+            $phone = $query['phone'];
+
+            $clients = Clients::find()->where(['like', 'familia', $query['familie']])->andWhere(['like', 'name', $query['name']])->andWhere(['like', 'father', $query['father']])->andWhere(['like', 'passport', $passport])->andWhere(['like', 'adress', $query['adress']])->andWhere(['like', 'pets_name', $query['pets_name']])->andWhere(['like', 'phone', $phone])->andWhere(['like', 'email', $query['email']])->andWhere(['like', 'pets_social_account', $query['social_account']])->andWhere(['like', 'chip', $query['chip']])->andWhere(['like', 'vid', $query['vid']])->asArray()->all();
+
+            $clients = json_encode($clients);
+
+            return $clients;
+
+        }        
+    }
+
 }

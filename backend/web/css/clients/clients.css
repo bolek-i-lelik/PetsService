@@ -1,0 +1,14 @@
+.fio{
+	font-size: 22px;
+	color: blue;
+}
+
+.passport{
+	padding-left: 15px;
+	font-size: 18px;
+	color: red;
+}
+
+.client a{
+	padding-right: 15px;
+}

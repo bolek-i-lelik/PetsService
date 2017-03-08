@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e292bd7e52a93eb9e22d8d96511ee894",
-    "content-hash": "85e9ed9f49372fa5227fbd2f4df8d512",
+    "hash": "84407105ee48c54f3988d5d85c00a04b",
+    "content-hash": "e4ffc2f9b9236016280780b7ca3945c4",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -416,20 +416,23 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.8.0",
+            "version": "v4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
+                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -456,7 +459,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2017-03-08 08:22:36"
         },
         {
             "name": "guzzle/common",
@@ -659,6 +662,266 @@
             ],
             "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
+        },
+        {
+            "name": "kartik-v/php-date-formatter",
+            "version": "v1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/php-date-formatter.git",
+                "reference": "075cabb950ad2e2b317daf424700bf0afdc1f604"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/php-date-formatter/zipball/075cabb950ad2e2b317daf424700bf0afdc1f604",
+                "reference": "075cabb950ad2e2b317daf424700bf0afdc1f604",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\dateformatter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A Javascript datetime formatting and manipulation library using PHP date-time formats.",
+            "homepage": "https://github.com/kartik-v/php-date-formatter",
+            "keywords": [
+                "date",
+                "datetime",
+                "formatter",
+                "javascript",
+                "php",
+                "php-date-formatter.js",
+                "time"
+            ],
+            "time": "2017-01-08 09:13:05"
+        },
+        {
+            "name": "kartik-v/yii2-date-range",
+            "version": "v1.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-date-range.git",
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/c7177cd89cc90772acc96a05fbf5996f67127e4c",
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\daterange\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An advanced Yii 2 date range picker input for based on bootstrap-daterangepicker plugin.",
+            "homepage": "https://github.com/kartik-v/yii2-date-range",
+            "keywords": [
+                "bootstrap",
+                "bootstrap 3",
+                "date",
+                "date-range",
+                "extension",
+                "range",
+                "time",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-07-12 07:02:07"
+        },
+        {
+            "name": "kartik-v/yii2-datecontrol",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-datecontrol.git",
+                "reference": "0f5d793f788c6fef9c8ba4a6242530858f2320f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-datecontrol/zipball/0f5d793f788c6fef9c8ba4a6242530858f2320f1",
+                "reference": "0f5d793f788c6fef9c8ba4a6242530858f2320f1",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/php-date-formatter": ">1.3",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\datecontrol\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Date control module allowing separation of formats for View and Model for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-datecontrol",
+            "keywords": [
+                "control",
+                "date",
+                "extension",
+                "format",
+                "yii",
+                "yii2"
+            ],
+            "time": "2017-01-14 11:34:27"
+        },
+        {
+            "name": "kartik-v/yii2-krajee-base",
+            "version": "v1.8.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-krajee-base.git",
+                "reference": "2479241c03c87995cfc528ae7b297f5ae9e733cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/2479241c03c87995cfc528ae7b297f5ae9e733cb",
+                "reference": "2479241c03c87995cfc528ae7b297f5ae9e733cb",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "@dev"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\base\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Base library and foundation components for all Yii2 Krajee extensions.",
+            "homepage": "https://github.com/kartik-v/yii2-krajee-base",
+            "keywords": [
+                "base",
+                "extension",
+                "foundation",
+                "krajee",
+                "widget",
+                "yii2"
+            ],
+            "time": "2017-02-22 05:58:53"
+        },
+        {
+            "name": "kartik-v/yii2-widget-timepicker",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-timepicker.git",
+                "reference": "203aeb9123e7fa9a3c584d206793d82abe96d469"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-timepicker/zipball/203aeb9123e7fa9a3c584d206793d82abe96d469",
+                "reference": "203aeb9123e7fa9a3c584d206793d82abe96d469",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\time\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Yii2 wrapper for the bootstrap timepicker plugin (sub repo split from yii2-widgets)",
+            "homepage": "https://github.com/kartik-v/yii2-widget-timepicker",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "form",
+                "jquery",
+                "picker",
+                "plugin",
+                "time",
+                "widget",
+                "yii2"
+            ],
+            "time": "2017-01-08 06:36:24"
         },
         {
             "name": "react/event-loop",
@@ -1797,16 +2060,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569"
+                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
-                "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
                 "shasum": ""
             },
             "require": {
@@ -1858,7 +2121,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-21 01:20:32"
+            "time": "2017-02-27 10:51:17"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2088,27 +2351,27 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.6.2",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb"
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/6c52c2722f8460122f96f86346600e1077ce22cb",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-                "sebastian/comparator": "^1.1",
-                "sebastian/recursion-context": "^1.0|^2.0"
+                "sebastian/comparator": "^1.1|^2.0",
+                "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.0",
+                "phpspec/phpspec": "^2.5|^3.2",
                 "phpunit/phpunit": "^4.8 || ^5.6.5"
             },
             "type": "library",
@@ -2147,39 +2410,39 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-11-21 14:58:47"
+            "time": "2017-03-02 20:05:34"
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.5",
+            "version": "4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971"
+                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c19cfc7cbb0e9338d8c469c7eedecc2a428b0971",
-                "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/09e2277d14ea467e5a984010f501343ef29ffc69",
+                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69",
                 "shasum": ""
             },
             "require": {
+                "ext-dom": "*",
+                "ext-xmlwriter": "*",
                 "php": "^5.6 || ^7.0",
-                "phpunit/php-file-iterator": "~1.3",
-                "phpunit/php-text-template": "~1.2",
-                "phpunit/php-token-stream": "^1.4.2",
-                "sebastian/code-unit-reverse-lookup": "~1.0",
+                "phpunit/php-file-iterator": "^1.3",
+                "phpunit/php-text-template": "^1.2",
+                "phpunit/php-token-stream": "^1.4.2 || ^2.0",
+                "sebastian/code-unit-reverse-lookup": "^1.0",
                 "sebastian/environment": "^1.3.2 || ^2.0",
-                "sebastian/version": "~1.0|~2.0"
+                "sebastian/version": "^1.0 || ^2.0"
             },
             "require-dev": {
-                "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "^5.4"
+                "ext-xdebug": "^2.1.4",
+                "phpunit/phpunit": "^5.7"
             },
             "suggest": {
-                "ext-dom": "*",
-                "ext-xdebug": ">=2.4.0",
-                "ext-xmlwriter": "*"
+                "ext-xdebug": "^2.5.1"
             },
             "type": "library",
             "extra": {
@@ -2210,7 +2473,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-01-20 15:06:43"
+            "time": "2017-03-01 09:12:17"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2302,25 +2565,30 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4|~5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -2342,20 +2610,20 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2016-05-12 18:03:57"
+            "time": "2017-02-26 11:10:40"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.9",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
                 "shasum": ""
             },
             "require": {
@@ -2391,20 +2659,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2016-11-15 14:06:22"
+            "time": "2017-02-27 10:12:30"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.14",
+            "version": "5.7.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4906b8faf23e42612182fd212eb6f4c0f2954b57"
+                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4906b8faf23e42612182fd212eb6f4c0f2954b57",
-                "reference": "4906b8faf23e42612182fd212eb6f4c0f2954b57",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b99112aecc01f62acf3d81a3f59646700a1849e5",
+                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5",
                 "shasum": ""
             },
             "require": {
@@ -2473,7 +2741,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-19 07:22:16"
+            "time": "2017-03-02 15:22:43"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2633,23 +2901,23 @@
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
-                "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe"
+                "reference": "4419fcdb5eabb9caa61a27c7a1db532a6b55dd18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
-                "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/4419fcdb5eabb9caa61a27c7a1db532a6b55dd18",
+                "reference": "4419fcdb5eabb9caa61a27c7a1db532a6b55dd18",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "^5.7 || ^6.0"
             },
             "type": "library",
             "extra": {
@@ -2674,7 +2942,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2016-02-13 06:45:14"
+            "time": "2017-03-04 06:30:41"
         },
         {
             "name": "sebastian/comparator",
@@ -3734,7 +4002,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kartik-v/yii2-datecontrol": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

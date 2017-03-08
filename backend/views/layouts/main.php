@@ -41,7 +41,23 @@ AppAsset::register($this);
             ['label' => 'Приём', 'url' => ['/site/about']],
             ['label' => 'Пациенты', 'url' => ['/site/contact']]
         ];
-    }else{
+    }
+    else if(Yii::$app->user->can('manager')){
+        NavBar::begin([
+            'brandLabel' => 'PetsService',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
+        ]);
+        $navItems=[
+            ['label' => 'Личный кабинет', 'url' => ['/user/settings/']],
+            ['label' => 'Графики работы', 'url' => ['/grafik/default/']],
+            ['label' => 'Отчёты', 'url' => ['/site/about']],
+            ['label' => 'Склад', 'url' => ['/site/contact']]
+        ];
+    }
+    else{
         NavBar::begin([
             'brandLabel' => 'PetsService',
             'brandUrl' => Yii::$app->homeUrl,
