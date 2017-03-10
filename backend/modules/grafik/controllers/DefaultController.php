@@ -88,8 +88,8 @@ class DefaultController extends Controller
     public function actionCreategrafik()
     {
 
-    	if(Yii::$app->request->isGET){
-	    	$query = Yii::$app->request->get();
+    	if(Yii::$app->request->isAJAX){
+	    	$query = Yii::$app->request->post();
 	    		
 	    	$worktime = new Worktime();
 
@@ -107,6 +107,42 @@ class DefaultController extends Controller
 	    	else{
 	    		return 'False';
 	    	}
+	    		    	
+	    }
+
+    }
+
+    public function actionFiltergrafik()
+    {
+
+    	if(Yii::$app->request->isAJAX){
+	    	$query = Yii::$app->request->post();
+	    		
+	    	$worker = $query['worker'];
+	    	$start = $query['start'];
+	    	$stop = $query['stop']+86400;
+
+	    	$worktimes = Worktime::find()->where(['worker' => $worker])->andWhere(['>=', 'day', $start])->andWhere(['<', 'day', $stop])->all();
+	    	$worktimes_new = array();
+	    	foreach($worktimes as $worktime){
+	    		$day = date('d-m-Y', $worktime->day);
+	    		$start = date('G-i', $worktime->start);
+	    		$stop = date('G-i', $worktime->stop);
+	    		$start_break = date('G-i', $worktime->start_break);
+	    		$stop_break = date('G-i', $worktime->stop_break);
+	    		$wt = [
+	    			'day' => $day,
+	    			'start' => $start,
+	    			'stop' => $stop,
+	    			'start_break' => $start_break,
+	    			'stop_break' => $stop_break,
+	    			'interval' => $worktime->interval,
+	    		];
+	    		$worktimes_new[] = $wt;
+	    	}
+	    	$worktimes_new = json_encode($worktimes_new);
+
+	    	return $worktimes_new;	    	
 	    		    	
 	    }
 

@@ -35,7 +35,7 @@ function saveWorktimeEvent(id){
 	stop_break = date + stop_break;
 	$.ajax({
         url: '/grafik/default/creategrafik',
-        type: 'GET',
+        type: 'POST',
         data: {
             'worker': id, 
             'day': date, 
@@ -60,4 +60,36 @@ function filterDate(id){
 	var interval_end = document.getElementById('interval-end').value;
 	console.log(interval_start);
 	console.log(interval_end);
+	interval_start = (new Date(interval_start).getTime()/1000);
+	interval_end = (new Date(interval_end).getTime()/1000);
+	$.ajax({
+        url: '/grafik/default/filtergrafik',
+        type: 'POST',
+        data: {
+            'worker': id, 
+            'start': interval_start,
+            'stop': interval_end,
+        },
+        success: function(data){
+        	console.log(data);
+            div = document.getElementById('worktime');
+            var html = '<table class="table table-striped table-bordered">';
+            html += '<tr><td><b>Дата</b></td><td><b>Начало</b></td><td><b>Окончание</b>';
+            html += '</td><td><b>Перерыв</b></td><td><b>Время на одного пациента</b></td></tr>';
+            data = JSON.parse(data);
+            console.log(data);
+            data.forEach(function(item, i, arr) {
+            	html += '<tr><td>' + item.day + '</td>';
+  				html += '<td>' + item.start + '</td>';
+  				html += '<td>' + item.stop + '</td>';
+  				html += '<td>' + item.start_break + ' - ' + item.stop_break +'</td>';
+  				html += '<td>' + item.interval + '</td></tr>';
+			});
+            html += '</table>';
+            div.innerHTML = html;
+        },
+        error: function(){
+            console.log('False');
+        }
+    });
 }

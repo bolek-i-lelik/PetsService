@@ -169,44 +169,46 @@ $today = date('Y-m-d');
 			?>
 			<hr/>
 			</div>
-			<table class="table table-striped table-bordered">
-				<tr>
-					<td>
-						<b>Дата</b>
-					</td>
-					<td>
-						<b>Начало</b>
-					</td>
-					<td>
-						<b>Окончание</b>
-					</td>
-					<td>
-						<b>Перерыв</b>
-					</td>
-					<td>
-						<b>Время на одного пациента</b>
-					</td>
-				</tr>
-				<?php foreach($worktimes as $worktime):?>
+			<div id="worktime">
+				<table class="table table-striped table-bordered">
 					<tr>
 						<td>
-							<?= $worktime['day'] ?>
+							<b>Дата</b>
 						</td>
 						<td>
-							<?= $worktime['start'] ?>
+							<b>Начало</b>
 						</td>
 						<td>
-							<?= $worktime['stop'] ?>
+							<b>Окончание</b>
 						</td>
 						<td>
-							<?= $worktime['start_break'].' - '.$worktime['stop_break'] ?>
+							<b>Перерыв</b>
 						</td>
 						<td>
-							<?= $worktime['interval'] ?>
+							<b>Время на одного пациента</b>
 						</td>
 					</tr>
-				<?php endforeach;?>
-			</table>
+					<?php foreach($worktimes as $worktime):?>
+						<tr>
+							<td>
+								<?= $worktime['day'] ?>
+							</td>
+							<td>
+								<?= $worktime['start'] ?>
+							</td>
+							<td>
+								<?= $worktime['stop'] ?>
+							</td>
+							<td>
+								<?= $worktime['start_break'].' - '.$worktime['stop_break'] ?>
+							</td>
+							<td>
+								<?= $worktime['interval'] ?>
+							</td>
+						</tr>
+					<?php endforeach;?>
+				</table>
+			</div>
 		<?php endif;?>
 		
 	</div>
