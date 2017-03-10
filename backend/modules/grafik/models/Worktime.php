@@ -37,6 +37,7 @@ class Worktime extends \yii\db\ActiveRecord
         return [
             [['worker', 'day', 'start', 'stop', 'start_break', 'stop_break'], 'required'],
             [['worker', 'day', 'start', 'stop', 'interval', 'start_break', 'stop_break'], 'integer'],
+            [['day'], 'unique'],
             [['worker'], 'exist', 'skipOnError' => true, 'targetClass' => Workers::className(), 'targetAttribute' => ['worker' => 'id']],
         ];
     }
@@ -65,4 +66,5 @@ class Worktime extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Workers::className(), ['id' => 'worker']);
     }
+
 }

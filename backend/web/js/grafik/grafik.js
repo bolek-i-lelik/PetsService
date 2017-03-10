@@ -20,7 +20,7 @@ function saveWorktimeEvent(id){
 	var stop_break = document.getElementById('stop_break').value;
 	//получаем таймстемпы
 	//таймстемп даты
-	date = (new Date(date).getTime()/1000) - 10800;
+	date = (new Date(date).getTime()/1000);
 	var startEvent = start_event.split(':',2);
 	start_event = (startEvent[0]*3600) + (startEvent[1]*60);
 	start_event = date + start_event;
@@ -46,10 +46,18 @@ function saveWorktimeEvent(id){
             'stop_break': stop_break,
         },
         success: function(){
-            console.log('OK');
+            location.reload();
         },
         error: function(){
             console.log('False');
         }
     });
+}
+
+function filterDate(id){
+	console.log(id);
+	var interval_start = document.getElementById('interval-start').value;
+	var interval_end = document.getElementById('interval-end').value;
+	console.log(interval_start);
+	console.log(interval_end);
 }

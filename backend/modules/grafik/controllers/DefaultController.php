@@ -55,10 +55,27 @@ class DefaultController extends Controller
 	    		$worker = Workers::find()->where(['id'=>$query['id']])->one();
 
 	    		$worktimes = Worktime::find()->where(['worker'=>$query['id']])->all();
+	    		$worktimes_new = array();
+	    		foreach($worktimes as $worktime){
+	    			$day = date('d-m-Y', $worktime->day);
+	    			$start = date('G-i', $worktime->start);
+	    			$stop = date('G-i', $worktime->stop);
+	    			$start_break = date('G-i', $worktime->start_break);
+	    			$stop_break = date('G-i', $worktime->stop_break);
+	    			$wt = [
+	    				'day' => $day,
+	    				'start' => $start,
+	    				'stop' => $stop,
+	    				'start_break' => $start_break,
+	    				'stop_break' => $stop_break,
+	    				'interval' => $worktime->interval,
+	    			];
+	    			$worktimes_new[] = $wt;
+	    		}
 
 	    		return $this->render('worker',[
 	    			'worker' => $worker,
-	    			'worktimes' => $worktimes,
+	    			'worktimes' => $worktimes_new,
 	    		]);
 	    	}
 	    }

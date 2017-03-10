@@ -138,7 +138,76 @@ $today = date('Y-m-d');
 	<div class="col-lg-12">
 		<?php if(empty($worktimes)): ?>
 			<div class="alert alert-warning">График рабочего времени пуст</div>
+		<?php else:?>
+			<div class="col-lg-1">
+				<b>Фильтр по дате</b>
+			</div>
+			<div class="col-lg-4">
+			<?php
+				$today = date('Y-m-d');
+				$today_timestamp = time();
+				$second_date = $today_timestamp + (86400 * 7);
+				$second_date = date('Y-m-d', $second_date);
+				echo '<div class="input-group drp-container">';
+				echo DateRangePicker::widget([
+				    'name'=>'kvdate2',
+				    'id' => 'interval',
+				    'useWithAddon'=>true,
+				    'convertFormat'=>true,
+				    'startAttribute' => 'filter_from_date',
+				    'endAttribute' => 'filter_to_date',
+				    'startInputOptions' => ['value' => $today],
+				    'endInputOptions' => ['value' => $second_date],
+				    'pluginOptions'=>[
+				        'locale'=>['format' => 'Y-m-d'],
+				    ],
+				    'pluginEvents' => [
+						'apply.daterangepicker' => 'function() { filterDate('.$worker["id"].'); }',
+					],
+				]) . $addon;
+				echo '</div>';
+			?>
+			<hr/>
+			</div>
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>
+						<b>Дата</b>
+					</td>
+					<td>
+						<b>Начало</b>
+					</td>
+					<td>
+						<b>Окончание</b>
+					</td>
+					<td>
+						<b>Перерыв</b>
+					</td>
+					<td>
+						<b>Время на одного пациента</b>
+					</td>
+				</tr>
+				<?php foreach($worktimes as $worktime):?>
+					<tr>
+						<td>
+							<?= $worktime['day'] ?>
+						</td>
+						<td>
+							<?= $worktime['start'] ?>
+						</td>
+						<td>
+							<?= $worktime['stop'] ?>
+						</td>
+						<td>
+							<?= $worktime['start_break'].' - '.$worktime['stop_break'] ?>
+						</td>
+						<td>
+							<?= $worktime['interval'] ?>
+						</td>
+					</tr>
+				<?php endforeach;?>
+			</table>
 		<?php endif;?>
-		<?= var_dump($worktimes)?>
+		
 	</div>
 </div>
