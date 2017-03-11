@@ -41,7 +41,7 @@ class DefaultController extends Controller
 
         }
     	else{
-    		return 'Не достаточно прав - вы не являетесь руководителем';
+    		return $this->redirect('/site/index');
     	}
 
     }
@@ -63,12 +63,14 @@ class DefaultController extends Controller
 	    			$start_break = date('G-i', $worktime->start_break);
 	    			$stop_break = date('G-i', $worktime->stop_break);
 	    			$wt = [
+	    				'id' => $worktime->id,
 	    				'day' => $day,
 	    				'start' => $start,
 	    				'stop' => $stop,
 	    				'start_break' => $start_break,
 	    				'stop_break' => $stop_break,
 	    				'interval' => $worktime->interval,
+	    				'date' => date('Y-m-d', $worktime->day),
 	    			];
 	    			$worktimes_new[] = $wt;
 	    		}
@@ -80,7 +82,7 @@ class DefaultController extends Controller
 	    	}
 	    }
 	    else{
-    		return 'Не достаточно прав - вы не являетесь руководителем';
+    		return $this->redirect('/site/index');
     	}
 
     }
@@ -115,10 +117,10 @@ class DefaultController extends Controller
     public function actionFiltergrafik()
     {
 
-    	if(Yii::$app->request->isAJAX){
-	    	$query = Yii::$app->request->post();
+    	if(Yii::$app->request->isGET){
+	    	$query = Yii::$app->request->get();
 	    		
-	    	$worker = $query['worker'];
+	    	/*$worker = $query['worker'];
 	    	$start = $query['start'];
 	    	$stop = $query['stop']+86400;
 
@@ -142,7 +144,64 @@ class DefaultController extends Controller
 	    	}
 	    	$worktimes_new = json_encode($worktimes_new);
 
-	    	return $worktimes_new;	    	
+	    	return $worktimes_new;	*/ 
+
+	    		$worker = $query['worker'];
+
+	    		$worker = Workers::find()->where(['id'=>$query['worker']])->one();
+
+	    		$start = $query['start'];
+	    		$stop = $query['stop']+86400;
+
+	    		$worktimes = Worktime::find()->where(['worker' => $worker])->andWhere(['>=', 'day', $start])->andWhere(['<', 'day', $stop])->all();
+	    		$worktimes_new = array();
+	    		foreach($worktimes as $worktime){
+	    			$day = date('d-m-Y', $worktime->day);
+	    			$start = date('G-i', $worktime->start);
+	    			$stop = date('G-i', $worktime->stop);
+	    			$start_break = date('G-i', $worktime->start_break);
+	    			$stop_break = date('G-i', $worktime->stop_break);
+	    			$wt = [
+	    				'day' => $day,
+	    				'start' => $start,
+	    				'stop' => $stop,
+	    				'start_break' => $start_break,
+	    				'stop_break' => $stop_break,
+	    				'interval' => $worktime->interval,
+	    				'date' => date('Y-m-d', $worktime->day),
+	    			];
+	    			$worktimes_new[] = $wt;
+	    		}
+
+	    		return $this->render('worker',[
+	    			'worker' => $worker,
+	    			'worktimes' => $worktimes_new,
+	    		]);   	
+	    		    	
+	    }
+
+    }
+
+    public function actionUpdategrafik()
+    {
+
+    	if(Yii::$app->request->isGET){
+	    	$query = Yii::$app->request->get();
+	    		
+	    	$worker = $query['worker'];
+	    	
+	    	$worktime = Worktime::find()->where(['day' => $query['day']])->andWhere(['worker' => $worker])->one();
+
+	    	$worktime->start = $query['start'];
+	    	$worktime->stop = $query['stop'];
+	    	$worktime->start_break = $query['start_break'];
+	    	$worktime->stop_break = $query['stop_break'];
+	    	if(!empty($query['interval'])){
+	    		$worktime->interval = $query['interval'];
+	    	}
+	    	$worktime->save();
+
+	    	return true;	    	
 	    		    	
 	    }
 

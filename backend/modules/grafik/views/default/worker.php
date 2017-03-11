@@ -19,9 +19,7 @@ $today = date('Y-m-d');
 	<div class="col-lg-2">
 		<a href="#" onclick="addNewWorktime(<?= $worker['id'] ?>)">Добавить</a>
 	</div>
-	<div class="col-lg-2">
-		<a href="#">Редактировать</a>
-	</div>
+	
 </div>
 <hr/>
 <div class="row" id="newWorktime">
@@ -136,9 +134,6 @@ $today = date('Y-m-d');
 </div>
 <div class="row">
 	<div class="col-lg-12">
-		<?php if(empty($worktimes)): ?>
-			<div class="alert alert-warning">График рабочего времени пуст</div>
-		<?php else:?>
 			<div class="col-lg-1">
 				<b>Фильтр по дате</b>
 			</div>
@@ -187,6 +182,9 @@ $today = date('Y-m-d');
 						<td>
 							<b>Время на одного пациента</b>
 						</td>
+						<td>
+
+						</td>
 					</tr>
 					<?php foreach($worktimes as $worktime):?>
 						<tr>
@@ -195,21 +193,87 @@ $today = date('Y-m-d');
 							</td>
 							<td>
 								<?= $worktime['start'] ?>
+								<div class="update_start" id="update_start_<?= $worktime['day'] ?>">
+									<?php
+										echo TimePicker::widget([
+										    'name' => 'update_start-'.$worktime['day'],
+										    'id' => 'update_start-'.$worktime['day'], 
+										    'value' => $worktime['start'],
+										    'pluginOptions' => [
+										        'minuteStep' => 1,
+										        'showSeconds' => false,
+										        'showMeridian' => false,
+										    ]
+										]);
+									?>
+								</div>
 							</td>
 							<td>
 								<?= $worktime['stop'] ?>
+								<div class="update_stop" id="update_stop_<?= $worktime['day'] ?>">
+									<?php
+										echo TimePicker::widget([
+										    'name' => 'update_stop-'.$worktime['day'],
+										    'id' => 'update_stop-'.$worktime['day'], 
+										    'value' => $worktime['stop'],
+										    'pluginOptions' => [
+										        'minuteStep' => 1,
+										        'showSeconds' => false,
+										        'showMeridian' => false,
+										    ]
+										]);
+									?>
+								</div>
 							</td>
 							<td>
 								<?= $worktime['start_break'].' - '.$worktime['stop_break'] ?>
+								<div class="update_break" id="update_break_<?= $worktime['day'] ?>">
+									<?php
+										echo TimePicker::widget([
+										    'name' => 'update_start_break_'.$worktime['day'],
+										    'id' => 'update_start_break_'.$worktime['day'],
+										    'value' => $worktime['start_break'], 
+										    'pluginOptions' => [
+										        'minuteStep' => 1,
+										        'showSeconds' => false,
+										        'showMeridian' => false,
+										    ]
+										]);
+									?>
+									<?php
+										echo TimePicker::widget([
+										    'name' => 'update_stop_break_'.$worktime['day'],
+										    'id' => 'update_stop_break_'.$worktime['day'], 
+										    'value' => $worktime['stop_break'],
+										    'pluginOptions' => [
+										        'minuteStep' => 1,
+										        'showSeconds' => false,
+										        'showMeridian' => false,
+										    ]
+										]);
+									?>
+								</div>
 							</td>
 							<td>
 								<?= $worktime['interval'] ?>
+								<div class="update_interval" id="update_interval_<?= $worktime['day'] ?>">
+									<input type="text" class="form-control" id="pacient_time_<?= $worktime['day'] ?>" value="<?= $worktime['interval'] ?>">
+								</div>
+							</td>
+							<td>
+								<div class="update_btn" id="update_btn_<?= $worktime['day'] ?>">
+									<a href="#" onclick="updateGrafik('<?= $worktime['day'] ?>', <?= $worker['id'] ?>)">Редактировать</a>
+								</div>
+								<div class="update_btn_result" id="update_btn_result_<?= $worktime['day'] ?>">
+									<a href="#" onclick="saveUpdateGrafik('<?= $worktime['day'] ?>', <?= $worker['id'] ?>, '<?= $worktime['date'] ?>')">Сохранить</a>
+									<a href="#" onclick="updateGrafik(<?= $worktime['day'] ?>, <?= $worker['id'] ?>)">Отмена</a>
+								</div>
 							</td>
 						</tr>
 					<?php endforeach;?>
 				</table>
 			</div>
-		<?php endif;?>
+		
 		
 	</div>
 </div>

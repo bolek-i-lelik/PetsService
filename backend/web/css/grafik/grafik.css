@@ -1,3 +1,24 @@
 #newWorktime{
 	display: none;
 }
+
+.update_start{
+	display: none;
+}
+
+.update_stop{
+	display: none;
+}
+
+.update_break{
+	display: none;
+}
+
+.update_interval{
+	display: none;
+}
+
+.update_btn_result{
+	display:none;
+}
+
